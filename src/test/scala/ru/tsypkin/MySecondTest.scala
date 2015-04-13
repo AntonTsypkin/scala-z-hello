@@ -11,9 +11,9 @@ class MySecondTest extends FunSuite with Matchers {
   test("my second test 1") {
     val x: Int = 8
     val y = SingletonObject.toString
-    println(SingletonObject.myFunction(1, y))
+    //println(SingletonObject.myFunction(1, y))
     val sub: SubPack = new SubPack("y")
 
-    println(s"wowwww sub = ${sub.toString}, singleton = ${SingletonObject.b}")
+   // println(s"wowwww sub = ${sub.toString}, singleton = ${SingletonObject.b}")
   }
 }

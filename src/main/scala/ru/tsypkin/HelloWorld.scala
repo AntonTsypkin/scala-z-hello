@@ -1,29 +1,13 @@
 package ru.tsypkin
 
 
-class HelloWorld {
 
-}
-
-object SingletonObject {
-  val b = 1000
-  def myFunction1 (x: Int, y: String): String = {
-    s"$y: $x"
-  }
-
-
-
-
-
+object SingletonObject extends ReadNumber with PascalV2 {
   def main(args: Array[String]): Unit = {
-    val mainStr : String = "-1-a"
-    if (mainStr(0) isDigit = true )
-
-
-
-
+    //readNumber()
+    readNumberV2("tr566979 5ty 67 89 00077")
+    //loops()
   }
-
 }
 
 
