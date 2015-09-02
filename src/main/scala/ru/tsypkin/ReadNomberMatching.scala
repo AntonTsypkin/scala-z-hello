@@ -7,7 +7,7 @@ import scala.collection.mutable.ArrayBuffer
  */
 trait ReadNomberMatching {
   def readNomberMatching(): Unit = {
-    var mainStr = "/,;l;.1.2..2..3.3.3.3.4bf654f.12345982739847398475781902783462794688563"
+    var mainStr = "/,;l;.1.2..2..3.3.3.3.4bf654f.12345982739847398475781902783462794688563a"
     mainStr  += "-"
     val strngLenght: Int = mainStr.length
     var saveDigit = new ArrayBuffer[(String , String )]()
