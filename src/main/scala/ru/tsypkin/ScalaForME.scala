@@ -6,8 +6,8 @@ package ru.tsypkin
 trait ScalaForME {
    def olimpicExample1 (): Unit = {
 val myArrayNomber = Array[Int](1,2,3,4,5)
-     val myNomberLength = 4
-     val myFactorials = new Array[Int](5)
+     val myNomberLength = myArrayNomber.length - 1
+     val myFactorials = new Array[Int](myArrayNomber.length)
      var x = 0
      for (x <- 0 to myNomberLength)
        if (x != 0) {
