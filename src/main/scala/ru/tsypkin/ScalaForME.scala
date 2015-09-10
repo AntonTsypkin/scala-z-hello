@@ -28,7 +28,7 @@ trait ScalaForME {
      //далее алгоритм поиска чисел под минус
      var y = myDifference/2 //разница,уменьшаемая в процессе до нуля
      val doubleMyArrayNomber = myArrayNomber //дублируем ряд для уменьшения
-     while (y >= doubleMyArrayNomber.last - 1) {
+     while (y >= doubleMyArrayNomber.last - 1)  {
        saveIndexForMinus(myArrayNomber.last) = doubleMyArrayNomber.last //запоминаем последнее число
        y = y - doubleMyArrayNomber.last //вычисляем новый остаток
        doubleMyArrayNomber.init //убираем из числового ряда последний член
