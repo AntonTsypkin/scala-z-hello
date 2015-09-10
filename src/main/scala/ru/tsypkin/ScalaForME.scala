@@ -6,7 +6,7 @@ package ru.tsypkin
 trait ScalaForME {
    def interData (): Unit = {
      val myArrayLenght = 11 // длина числового ряда
-     val myX = 1 // искомое число
+     val myX = 1// искомое число
      println("Искомый результат " + myX)
      val myArrayNomber = new Array[Int](myArrayLenght) //мой числовой ряд
      for (y <- 0 to (myArrayLenght - 1)) myArrayNomber(y) = y //здесь явно можно сделать проще!!!
@@ -26,19 +26,17 @@ trait ScalaForME {
      var saveIndexForMinus = new Array[Int](myArrayLenght) //сохранение индексов
      if (myDifference % 2 != 0) println("При таком искомом числе решение невозможно")//принципиально это возможно?
      //далее алгоритм поиска чисел под минус
-     var y = myDifference/2//разница,уменьшаемая в процессе до нуля
-     var doubleMyArrayNomber = myArrayNomber//дублируем ряд для уменьшения
-     while (y != 0) {
-       if (y > doubleMyArrayNomber.last) {
-         saveIndexForMinus(myArrayNomber.last) = doubleMyArrayNomber.last//запоминаем последнее число
-         y = y - doubleMyArrayNomber.last //вычисляем новый остаток
-         doubleMyArrayNomber.init//убираем из числового ряда последний член
-       }
-       else
-         saveIndexForMinus(y) = y
-         y = 0
+     var y = myDifference/2 //разница,уменьшаемая в процессе до нуля
+     val doubleMyArrayNomber = myArrayNomber //дублируем ряд для уменьшения
+     while (y >= doubleMyArrayNomber.last - 1) {
+       saveIndexForMinus(myArrayNomber.last) = doubleMyArrayNomber.last //запоминаем последнее число
+       y = y - doubleMyArrayNomber.last //вычисляем новый остаток
+       doubleMyArrayNomber.init //убираем из числового ряда последний член
      }
-     for (i <- 0 to saveIndexForMinus.length - 1) println("Поставить минус перед цифрой " + saveIndexForMinus(i))//вывод чисел перед которыми нужно поставить минус
+         saveIndexForMinus(y) = y
+         //y = 0
+
+     for (i <- 0 to saveIndexForMinus.length - 1) if (saveIndexForMinus(i) != 0) println("Поставить минус перед цифрой " + saveIndexForMinus(i))//вывод чисел перед которыми нужно поставить минус
    }
 }
 
