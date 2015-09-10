@@ -6,7 +6,7 @@ package ru.tsypkin
 trait ScalaForME {
    def interData (): Unit = {
      val myArrayLenght = 11 // длина числового ряда
-     val myX = 1// искомое число
+     val myX = 5// искомое число
      println("Искомый результат " + myX)
      val myArrayNomber = new Array[Int](myArrayLenght) //мой числовой ряд
      for (y <- 0 to (myArrayLenght - 1)) myArrayNomber(y) = y //здесь явно можно сделать проще!!!
@@ -27,11 +27,11 @@ trait ScalaForME {
      if (myDifference % 2 != 0) println("При таком искомом числе решение невозможно")//принципиально это возможно?
      //далее алгоритм поиска чисел под минус
      var y = myDifference/2 //разница,уменьшаемая в процессе до нуля
-     val doubleMyArrayNomber = myArrayNomber //дублируем ряд для уменьшения
-     while (y >= doubleMyArrayNomber.last - 1)  {
-       saveIndexForMinus(myArrayNomber.last) = doubleMyArrayNomber.last //запоминаем последнее число
+     var doubleMyArrayNomber = myArrayNomber //дублируем ряд для уменьшения
+     while (y > doubleMyArrayNomber.last)  {
+       saveIndexForMinus(doubleMyArrayNomber.last) = doubleMyArrayNomber.last //запоминаем последнее число
        y = y - doubleMyArrayNomber.last //вычисляем новый остаток
-       doubleMyArrayNomber.init //убираем из числового ряда последний член
+       doubleMyArrayNomber = doubleMyArrayNomber.init //убираем из числового ряда последний член
      }
          saveIndexForMinus(y) = y
          //y = 0
