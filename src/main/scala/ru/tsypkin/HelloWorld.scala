@@ -16,7 +16,7 @@ object SingletonObject extends ReadNumber with PascalV2 with PascalV1 with ReadN
     //loops()
     //pascalV1
     //watsIsScala(9,58)
-    olimpicExample1()
+    interData()
     //repeat()
 
   }

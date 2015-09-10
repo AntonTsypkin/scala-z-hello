@@ -4,23 +4,41 @@ package ru.tsypkin
  * Created by AntonTsypkin on 29.04.15.
  */
 trait ScalaForME {
-   def olimpicExample1 (): Unit = {
-val myArrayNomber = Array[Int](1,2,3,4,5)
-     val myNomberLength = myArrayNomber.length - 1
+   def interData (): Unit = {
+     val myArrayLenght = 11 // длина числового ряда
+     val myX = 1 // искомое число
+     println("Искомый результат " + myX)
+     val myArrayNomber = new Array[Int](myArrayLenght) //мой числовой ряд
+     for (y <- 0 to (myArrayLenght - 1)) myArrayNomber(y) = y //здесь явно можно сделать проще!!!
      val myFactorials = new Array[Int](myArrayNomber.length)
      var x = 0
-     for (x <- 0 to myNomberLength)
+     for (x <- 0 to (myArrayNomber.length - 1)) {
        if (x != 0) {
-         myFactorials(x) = myFactorials(x-1) + myArrayNomber(x)
+         myFactorials(x) = myFactorials(x - 1) + myArrayNomber(x)
        }
-     myFactorials(0) = 1
-     myFactorials.foreach(println)
-
-
-
-
-
+       else {
+         myFactorials(x) = myArrayNomber(x)
+       }
+     }//вычислили ряд факториалов
+     for (i <- 0 to (myArrayLenght - 1)) println(myArrayNomber(i) + " - " + myFactorials(i)) //вывод числового ряда
+     val myDifference = myFactorials(myArrayLenght - 1) - myX //вычисление разницы между факториалом самого большого числа и искомым
+     println("myDifference = " + myDifference) //вывод разницы
+     var saveIndexForMinus = new Array[Int](myArrayLenght) //сохранение индексов
+     if (myDifference % 2 != 0) println("При таком искомом числе решение невозможно")//принципиально это возможно?
+     //далее алгоритм поиска чисел под минус
+     var y = myDifference/2//разница,уменьшаемая в процессе до нуля
+     var doubleMyArrayNomber = myArrayNomber//дублируем ряд для уменьшения
+     while (y != 0) {
+       if (y > doubleMyArrayNomber.last) {
+         saveIndexForMinus(myArrayNomber.last) = doubleMyArrayNomber.last//запоминаем последнее число
+         y = y - doubleMyArrayNomber.last //вычисляем новый остаток
+         doubleMyArrayNomber.init//убираем из числового ряда последний член
+       }
+       else
+         saveIndexForMinus(y) = y
+         y = 0
+     }
+     for (i <- 0 to saveIndexForMinus.length - 1) println("Поставить минус перед цифрой " + saveIndexForMinus(i))//вывод чисел перед которыми нужно поставить минус
    }
-
 }
 
