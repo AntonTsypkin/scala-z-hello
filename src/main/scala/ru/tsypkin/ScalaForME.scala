@@ -6,9 +6,9 @@ package ru.tsypkin
 trait ScalaForME {
    def interData (): Unit = {
      val myArrayLenght = 11 // длина числового ряда
-     val myX = 49// искомое число
+     val myX = 33// искомое число
      println("Искомый результат " + myX)
-     val myArrayNomber = new Array[Int](myArrayLenght) //мой числовой ряд
+     var myArrayNomber = new Array[Int](myArrayLenght) //мой числовой ряд
      for (y <- 0 to (myArrayLenght - 1)) myArrayNomber(y) = y //здесь явно можно сделать проще!!!
      val myFactorials = new Array[Int](myArrayNomber.length)
      var x = 0
@@ -39,23 +39,31 @@ trait ScalaForME {
      for (i <- 0 to saveIndexForMinus.length - 1) if (saveIndexForMinus(i) != 0) println("Поставить минус перед цифрой " + saveIndexForMinus(i))//вывод чисел перед которыми нужно поставить минус
      //далее выстраиваем итоговый ряд из цифр и знаков
      //сначала превратим saveIndex в последовательность минусов и плюсов
-     val totalSignature = new Array [String] (saveIndexForMinus.length)
+     var totalSignature = new Array [String] (saveIndexForMinus.length)
      for (i <- 0 to totalSignature.length - 1) if (saveIndexForMinus(i) == 0) totalSignature(i) = "+" else totalSignature(i) = "-"
-     val totalString = new Array[String](myArrayNomber.length + totalSignature.length)
+     var totalString = new Array[String](myArrayNomber.length + totalSignature.length)
+     var i = 0
      totalString(0) = totalSignature(0)
      totalString(1) = myArrayNomber(0).toString
-     var indexNomero = 1
-     var indexSignature = 1
-     for (i <- 2 to totalString.length - 1) {
+     totalSignature = totalSignature.tail
+     myArrayNomber = myArrayNomber.tail
+     i = 2
+     while (i <= totalString.length - 1) {
        if (i%2 == 0) {
-         totalString(i) = myArrayNomber(indexNomero).toString
-         indexNomero.+(1)
+         totalString(i) = totalSignature(0)
+         totalSignature = totalSignature.tail
+         i = i.+(1)
        }
        else {
-         totalString(i) = totalSignature(indexSignature)
-         indexSignature.+(1)
+         totalString(i) = myArrayNomber(0).toString
+         myArrayNomber = myArrayNomber.tail
+         i = i.+(1)
        }
+
+
      }
+     totalString = totalString.tail
+     totalString.foreach(print)
 
 
    }
