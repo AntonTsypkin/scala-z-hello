@@ -2,7 +2,7 @@ package ru.tsypkin
 
 
 
-object SingletonObject extends ReadNumber with PascalV2 with PascalV1 with ReadNomberMatching with MassivesProba with MassiveReserch with ScalaForME{
+object SingletonObject extends ReadNumber with PascalV2 with PascalV1 with ReadNomberMatching with MassivesProba with MassiveReserch with ScalaForME with someList{
 
 
 
@@ -17,6 +17,7 @@ object SingletonObject extends ReadNumber with PascalV2 with PascalV1 with ReadN
     //pascalV1
     //watsIsScala(9,58)
     interData()
+    //someList()
     //repeat()
 
   }
